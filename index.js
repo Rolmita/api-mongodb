@@ -1,16 +1,22 @@
-import { MongoClient, ObjectId } from 'mongodb' // Documentación CRUD: https://mongodb.github.io/node-mongodb-native/6.2/
+import { MongoClient, ObjectId, ServerApiVersion } from 'mongodb' // Documentación CRUD: https://mongodb.github.io/node-mongodb-native/6.2/
 import express from "express"
 
 const app = express()
 app.use(express.json())  // IMPORTANTE: SOPORTE PARA JSON
 
 
-const PORT = process.env.PORT ?? 3000
+const PORT = process.env.PORT ?? 3001
 const DB_URL = process.env.MONGODB_URI ?? 'mongodb://localhost:27017'
 const DB_NAME = process.env.DB_NAME ?? 'api'
 const COLLECTION = 'users'
 
-const client = new MongoClient(DB_URL)
+const client = new MongoClient(DB_URL, {
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    }
+  });
 
 app.get("/", (request, response) => {
     response.redirect("/api/users")
@@ -19,12 +25,18 @@ app.get("/", (request, response) => {
 
 // GET
 app.get('/api/users', async (request, response) => {
+    try{
+    await client.connect();
     const database = client.db(DB_NAME);
     const collection = database.collection(COLLECTION);
 
     const results = await collection.find({}).toArray()
 
-    response.status(200).json(results)
+    response.status(200).json(results)}catch(error){
+        console.log(error);
+    }finally{
+        await client.close();
+    }
 })
 
 // POST 
@@ -69,7 +81,7 @@ app.put('/api/users/:id', async (request, response) => {
 
 // DELETE
 app.delete('/api/users/:id', async (request, response) => {
-    const database =  client.db(DB_NAME);
+    const database = client.db(DB_NAME);
     const collection = database.collection(COLLECTION);
 
     const { id } = request.params
@@ -78,5 +90,5 @@ app.delete('/api/users/:id', async (request, response) => {
 })
 
 
-app.listen(PORT, () => console.log(`Servidor web iniciado en puerto ${PORT}`))
+app.listen(PORT, () => console.log(`Ok. Puerto: ${PORT}`))
 
