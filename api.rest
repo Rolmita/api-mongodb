@@ -174,5 +174,7 @@ content-type: application/json
     "descripcion": "Chaleco cropped abierto con manga sisa. Detalle de bordados y abalorios combinados a contraste."
 }
 
+###
+
 DELETE https://api-mongodb-dev-zsjg.1.us-1.fl0.io/api/productos/654e4ef60aa8918bbd1fa8a5 HTTP/1.1
 content-type: application/json
