@@ -1,6 +1,6 @@
 # Ejemplos
 
-POST http://localhost:3000/api/users HTTP/1.1
+POST http://localhost:3001/api/users HTTP/1.1
 content-type: application/json
 
 { 
@@ -10,7 +10,7 @@ content-type: application/json
 
 ###
 
-POST http://localhost:3000/api/users HTTP/1.1
+POST http://localhost:3001/api/users HTTP/1.1
 content-type: application/json
 
 { 
@@ -21,17 +21,17 @@ content-type: application/json
 
 ### 
 
-GET http://localhost:3000/api/users HTTP/1.1
+GET http://localhost:3001/api/users HTTP/1.1
 content-type: application/json
 
 ###
 
-GET http://localhost:3000/api/users/6542da20c20d9ad95c739701 HTTP/1.1
+GET http://localhost:3001/api/users/6542da20c20d9ad95c739701 HTTP/1.1
 content-type: application/json
 
 ###
 
-PUT http://localhost:3000/api/users/6548f6566802ae8e19bd782b HTTP/1.1
+PUT http://localhost:3001/api/users/6548f6566802ae8e19bd782b HTTP/1.1
 content-type: application/json
 
 { 
@@ -41,7 +41,7 @@ content-type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/users/6544e7ced958fc237ad628ed HTTP/1.1
+DELETE http://localhost:3001/api/users/6544e7ced958fc237ad628ed HTTP/1.1
 content-type: application/json
 
 ###
@@ -50,6 +50,11 @@ DELETE https://api-mongodb-dev-nnas.3.us-1.fl0.io/api/users/6542da20c20d9ad95c73
 content-type: application/json
 
 ### 
+
+GET  https://api-mongodb-dev-zsjg.1.us-1.fl0.io/api/users HTTP/1.1
+content-type: application/json
+
+###
 
 POST https://api-mongodb-dev-zsjg.1.us-1.fl0.io/api/users HTTP/1.1
 content-type: application/json
@@ -80,5 +85,94 @@ content-type: application/json
 
 ###
 
+PUT https://api-mongodb-dev-zsjg.1.us-1.fl0.io/api/users/654bb319122c7d2a893341c3 HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "Almudena",
+    "edad": 27
+}
+
+###
+
 DELETE https://api-mongodb-dev-zsjg.1.us-1.fl0.io/api/users/654a78860b099ce731800d50 HTTP/1.1
+content-type: application/json
+
+###
+// OPERACIONES CON LOS PRODUCTOS (APP NO DESPLEGADA EN FL0)
+
+GET http://localhost:3001/api/productos HTTP/1.1
+content-type: application/json
+
+###
+POST http://localhost:3001/api/productos HTTP/1.1
+content-type: application/json
+
+{
+    "nombre": "DEPORTIVAS BLANCAS CON PLATAFORMA - ZARA",
+    "precio": 39.95,
+    "descripcion": "Zapatillas de deporte color blanco con plataforma de 2 cm."
+}
+
+###
+
+PUT http://localhost:3001/api/productos/654e4c6b0aa8918bbd1fa8a0 HTTP/1.1
+content-type: application/json
+
+{
+    "nombre": "VESTIDO LARGO SOFT RIB - ZARA",
+    "precio": 34.95,
+    "descripcion": "Vestido largo de escote pico y manga larga"
+}
+
+###
+
+DELETE http://localhost:3001/api/productos/654e4e9d0aa8918bbd1fa8a4 HTTP/1.1
+content-type: application/json
+
+###
+// OPERACIONES CON LOS PRODUCTOS (APP DESPLEGADA EN FL0)
+
+GET  https://api-mongodb-dev-zsjg.1.us-1.fl0.io/api/productos HTTP/1.1
+content-type: application/json
+
+###
+
+GET  https://api-mongodb-dev-zsjg.1.us-1.fl0.io/api/productos/654e4c6b0aa8918bbd1fa8a0 HTTP/1.1
+content-type: application/json
+
+###
+
+POST https://api-mongodb-dev-zsjg.1.us-1.fl0.io/api/productos HTTP/1.1
+content-type: application/json
+
+{
+    "nombre": "JERSEY CUELLO VUELTO NEGRO - ZARA",
+    "precio": 18.99,
+    "descripcion": "Jersey de lana básico en color negro."
+}
+
+###
+
+POST https://api-mongodb-dev-zsjg.1.us-1.fl0.io/api/productos HTTP/1.1
+content-type: application/json
+
+{
+    "nombre": "PANTALONES GRISES ESTAMPADOS - ZARA",
+    "precio": 29.95,
+    "descripcion": "Pantalones color gris con estampado de cuadros"
+}
+
+###
+
+PUT https://api-mongodb-dev-zsjg.1.us-1.fl0.io/api/productos/654e4c6b0aa8918bbd1fa8a0 HTTP/1.1
+content-type: application/json
+
+{
+    "nombre": "CHALECO TERCIOPELO BORDADOS ABALORIOS - ZARA",
+    "precio": 29.95,
+    "descripcion": "Chaleco cropped abierto con manga sisa. Detalle de bordados y abalorios combinados a contraste."
+}
+
+DELETE https://api-mongodb-dev-zsjg.1.us-1.fl0.io/api/productos/654e4c6b0aa8918bbd1fa8a0 HTTP/1.1
 content-type: application/json
